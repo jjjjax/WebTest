@@ -1,0 +1,16 @@
+{
+  "apkUrl1": "./files/android.apk",
+  "apkUrl2": "./files/android.apk",
+  "ipaUrl1": "./files/ios.ipa",
+  "ipaUrl2": "./files/ios.ipa",
+  "title": "功夫爱猫不猫",
+  "official": "官方",
+  "version": "1.0.811",
+  "updateTime": "2025-15-10 12:00:00",
+  "download1": "安全下载11111",
+  "download2": "安全下载22222",
+  "logo": "./files/gongfuxmxz.png",
+  "iosTutorialTitle": "苹果手机信任教程",
+  "iosTutorialImg": "./files/jiaocheng.jpg"
+
+} 

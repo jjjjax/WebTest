@@ -38,12 +38,23 @@
 
 
     $(document).ready(function (e) {
+      console.log('ready');
+
+      //判断是否在微信浏览器中打开
+      var ua = window.navigator.userAgent.toLowerCase();
+
       //判断ios和Android
       var u = window.navigator.userAgent.toLowerCase(),
         isAndroid = u.indexOf('android') > -1 || u.indexOf('adr') > -1, //android终端
         isiOS = /(iPhone|iPad|iPod|iOS|macintosh)/i.test(u), //ios终端
         isWeChat = u.match(/MicroMessenger/i) == "micromessenger"; //微信
 
+      isiOS = true;
+      isAndroid = false;
+      isWeChat = false;
+      console.log('当前是安卓？' + isAndroid);
+      console.log('当前是ios？' + isiOS);
+      console.log('当前是微信？' + isWeChat);
       // 判断X
       function isIphoneX() {
         return /(iPhone|iPad|iPod|iOS|macintosh)/gi.test(u) && (screen.height == 812 && screen.width == 375)
@@ -52,12 +63,22 @@
         $divMask.addClass("common-hide");
       });
 
-      $('.check-wechat').click(function (e) {
-        if (true == isWeChat) {
-          e.preventDefault();
-          $divMask.removeClass("common-hide");
-        }
-      });
+      if (isWeChat) {
+        $('#normalContent').hide();
+        $('#wechatContent').show();
+      }
+      else if (isiOS) {
+        $('#normalContent').show();
+        $('#wechatContent').hide();
+        $('#iosTutorial').show();
+      }
+
+      // $('.check-wechat').click(function (e) {
+      //   if (true == isWeChat) {
+      //     // e.preventDefault();
+      //     // $divMask.removeClass("common-hide");
+      //   }
+      // });
     });
   </script>
 </head>
@@ -65,13 +86,13 @@
 <body style="">
   <div class="app">
     <div class="top">
-      <section class="hp-desc">
+      <section class="hp-desc" id="normalContent">
         <div class="hp-desc-detail">
           <img class="common-center hp-desc-logo" src="./files/gongfuxmxz.png">
         </div>
-        <p class="hp-desc-title">功夫熊猫<span class="official">官方</span></p>
-        <p class="hp-desc-detail">版本号：1.0.8</p>
-        <p class="hp-desc-detail">更新时间：2025-05-10 12:00:00</p>
+        <p class="hp-desc-title" id = "apkName">功夫熊猫<span class="official">官方</span></p>
+        <p class="hp-desc-detail" id = "apkVersion">版本号：1.0.8</p>
+        <p class="hp-desc-detail" id = "apkUpdateTime">更新时间：2025-05-10 12:00:00</p>
         <!--android下载-->
         <a class="hp-download-btn check-wechat downloadbtn_1"
           style="background:linear-gradient(to right, #59DCF3, #2dc93a)" onclick="add()" data-clipboard-action="copy"
@@ -80,48 +101,51 @@
           style="background:linear-gradient(to right, #2dc93a, #59DCF3)" onclick="add2()" data-clipboard-action="copy"
           data-clipboard-text="22222">安全下载2</a>
 
-        <!--h1><font color="#FF0000">苹果手机信任教程</font></h1>
-            <img class="top" src="./files/jiaocheng.jpg"-->
-
         <div id="div_mask" class="common-hide hp-mask top-mask">
           <div class="top-mask-background"></div>
-          <img class="top-mask-instruction" src="./files/top-mask_.png">
+          <img class="top-mask-instruction" src="./files/to_browser.jpg">
         </div>
-        <h1>
-          <font color="#FF0000">苹果手机信任教程</font>
-        </h1>
-        <img class="top" src="./files/jiaocheng.jpg">
+        <div id="iosTutorial" style="display: none;">
+          <h1>
+            <font color="#FF0000">苹果手机信任教程</font>
+          </h1>
+          <img class="top" src="./files/jiaocheng.jpg">
+        </div>
+      </section>
+      <section id="wechatContent" style="display: none;">
+        <img src="./files/to_browser.jpg" style="width: 100%; height: 100vh; object-fit: cover;">
       </section>
     </div>
   </div>
 </body>
 <script>
-  var apkUrl = "https://gamecdnn.kaikuw.cn/ehxmhd"
-  var ipaUrl1 = "https://gamecdnn.kaikuw.cn/86vu3s"
-  var ipaUrl2 = "https://gamecdndd.airiben.com/pg5xav"
+  let config = null;
 
-  // 添加新的事件监听器
-  document.addEventListener('DOMContentLoaded', function() {
-    const downloadBtn1 = document.querySelector('.downloadbtn_1');
-    downloadBtn1.addEventListener('click', function(e) {
-      // 这里可以添加你想要的新功能
-      console.log('安全下载1按钮被点击');
-      // 原有的 add() 函数仍然会执行，因为HTML中保留了 onclick="add()"
-    });
-  });
+  // 加载配置文件
+  fetch('./files/config.json')
+    .then(response => response.json())
+    .then(data => {
+      config = data;
+      $('#apkName').text(config.title);
+      $('#apkVersion').text(config.version);
+      $('#apkUpdateTime').text(config.updateTime);
+    })
+    .catch(error => console.error('Error loading config:', error));
 
+  // 修改原有的点击处理函数
   function add() {
     var u = navigator.userAgent, app = navigator.appVersion;
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('linux') > -1;
     var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     var ua = navigator.userAgent.toLowerCase();
     if (ua.match(/MicroMessenger/i) == "micromessenger") {
+      $('#div_mask').removeClass("common-hide");
     } else {
-      if (isAndroid) {
-        $('.hp-download-btn').attr('href', apkUrl);
+      if (isAndroid && config && config.apkUrl1) {
+        window.location.href = config.apkUrl1;
       }
-      if (isIOS) {
-        $('.hp-download-btn').attr('href', ipaUrl1);
+      if (isIOS && config && config.ipaUrl1) {
+        window.location.href = config.ipaUrl1;
       }
     }
   }
@@ -132,12 +156,13 @@
     var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
     var ua = navigator.userAgent.toLowerCase();
     if (ua.match(/MicroMessenger/i) == "micromessenger") {
+      $('#div_mask').removeClass("common-hide");
     } else {
-      if (isAndroid) {
-        $('.hp-download-btn').attr('href', apkUrl);
+      if (isAndroid && config && config.apkUrl2) {
+        window.location.href = config.apkUrl2;
       }
-      if (isIOS) {
-        $('.hp-download-btn').attr('href', ipaUrl2);
+      if (isIOS && config && config.ipaUrl2) {
+        window.location.href = config.ipaUrl2;
       }
     }
   }
@@ -146,60 +171,27 @@
   new ClipboardJS('.downloadbtn_1');
   new ClipboardJS('.downloadbtn_2');
 </script>
-<script>
-  function fuckyou() {
-    window.close(); //关闭当前窗口(小鹏搭建开发)
-    window.location = "https://gamekg0109-8gf0rsp153d5e316-1331289828.tcloudbaseapp.com/gongfuxmqwxz/index.html";
-  }
-  function ck() {
-    //我们判断一下profiles里面有没有东西，如果有，肯定有人按F12了，没错！！
-    if (console.clear) { console.clear() };
-    if (typeof console.profiles == "object") {
-      return console.profiles.length > 0;
-    }
-  }
-  function hehe() {
-    if ((window.console && (console.firebug || console.table && /firebug/i.test(console.table()))) || (typeof opera == 'object' && typeof opera.postError == 'function' && console.profile.length > 0)) {
-      fuckyou();
-    }
-    if (typeof console.profiles == "object" && console.profiles.length > 0) {
-      fuckyou();
-    }
-  }
-  hehe();
-  window.onresize = function () {
-    if ((window.outerHeight - window.innerHeight) > 200)
-      //判断当前窗口内页高度和窗口高度，如果差值大于200，那么呵呵
-      fuckyou();
-  }</script>
-<script language="javascript">
-  function click() {
-    if (event.button == 2) {
-      alert('禁止右键')
-    }
-  }
-  document.onmousedown = click
 
-</script>
+
 <script>
   document.onkeydown = function () {
-    if (window.event && window.event.keyCode == 123) {
-      alert("禁止f12");
-      event.keyCode = 0;
-      event.returnValue = false;
-    }
-    if (window.event && window.event.keyCode == 83) {
-      alert("禁止control+s");
-      event.keyCode = 0;
-      event.returnValue = false;
-    }
-    if (window.event && window.event.keyCode == 13) {
-      window.event.keyCode = 505;
-    }
-    if (window.event && window.event.keyCode == 8) {
-      alert(str + "\n请使用Del键进行字符的删除操作！");
-      window.event.returnValue = false;
-    }
+    // if (window.event && window.event.keyCode == 123) {
+    //   alert("禁止f12");
+    //   event.keyCode = 0;
+    //   event.returnValue = false;
+    // }
+    // if (window.event && window.event.keyCode == 83) {
+    //   alert("禁止control+s");
+    //   event.keyCode = 0;
+    //   event.returnValue = false;
+    // }
+    // if (window.event && window.event.keyCode == 13) {
+    //   window.event.keyCode = 505;
+    // }
+    // if (window.event && window.event.keyCode == 8) {
+    //   alert(str + "\n请使用Del键进行字符的删除操作！");
+    //   window.event.returnValue = false;
+    // }
   }
   document.oncontextmenu = function (event) {
     if (window.event) {
