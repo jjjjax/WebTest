@@ -1,0 +1,529 @@
+@media (max-width: 414px) {
+    html {
+      font-size: 18px;
+    }
+  }
+  @media (max-width: 375px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 320px) {
+    html {
+      font-size: 15px;
+    }
+  }
+  @keyframes shake {
+    0% {
+      transform: scale(1);
+      -webkit-transform: scale(1);
+    }
+    39% {
+      transform: scale(1);
+      -webkit-transform: scale(1);
+    }
+    40% {
+      transform: scale(1.1) rotate(10deg);
+      -webkit-transform: scale(1.1) rotate(10deg);
+    }
+    60% {
+      transform: scale(1.1) rotate(0deg);
+      -webkit-transform: scale(1.1) rotate(0deg);
+    }
+    80% {
+      transform: scale(1.1) rotate(-10deg);
+      -webkit-transform: scale(1.1) rotate(-10deg);
+    }
+    100% {
+      transform: scale(1.1) rotate(0deg);
+      -webkit-transform: scale(1.1) rotate(0deg);
+    }
+  }
+  @keyframes scaleout {
+    0% {
+      transform: scale(1);
+      -webkit-filter: brightness(200%);
+      -webkit-transform: scale(1);
+    }
+    100% {
+      transform: scale(1.1);
+      -webkit-transform: scale(1.1);
+      opacity: 0;
+    }
+  }
+  body,html {
+    background: #f3f3f3;
+  }
+  ::selection{background: transparent;}
+  /*a:active{background: transparent;}
+  a:visited{background: transparent;}
+  a:hover{background: transparent;}
+  a:link{background: transparent;}
+  a{-webkit-tap-highlight-color: transparent;}*/
+  input,select{-webkit-appearance:none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+  
+  .app {
+    background: rgb(248, 248, 248);
+    font-size: 0.9em;
+  }
+  .app .start-play {
+    color: #fff;
+    font-size: 0.78rem;
+    padding: 3.5% 6%;
+    border-radius: 0.4rem;
+    background: linear-gradient(to right, #ff5b02, #ff4702);
+    background: -webkit-linear-gradient(left, #ff7300, #ff3c04);
+  }
+  .app .start-down {
+    color: #fff;
+    font-size: 0.78rem;
+    padding: 3.5% 6%;
+    border-radius: 0.4rem;
+    background: rgb(45, 194, 56);
+  }
+  .app .single {
+    overflow: hidden;
+    margin-left: 4.5%;
+    margin-top: 2.5%;
+    width:20%;
+  }
+  .app .single .l1 img {
+    width: 100%;
+    /*height: 100%;*/
+  }
+  .app .single .l2 {
+    margin: 1% 0 ;
+    color: #fff;
+  }
+  .app .single .l2 .title {
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+    padding:2% 0;
+    width: 100%;
+    color:#333;
+    text-align:center;
+  }
+  .app .single .l2 .det {
+    color: #606368;
+    font-size: 0.7rem;
+    transform: scale(0.95);
+    margin-left: -3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .app .single .l3 {
+    transform: scale(0.9);
+    color: #606368;
+    font-size: 0.7rem;
+    margin-left: -1%;
+    width: 29%;
+    padding: 6% 0 0;
+  }
+  .app .single .l4{
+    width: 100%;
+    padding-top: 4%;
+    text-align: center;
+  }
+  .app .single .l4 a{display: block;padding: 8% 0;width: 96%;margin: auto;}
+  
+  
+  .app .subject{background: #fff;margin: 3% auto 0;padding-bottom: 3%;}
+  .app .subject p{width: 18%;margin: auto;padding: 3% 0;color: #5f646f;position: relative;text-align: center; color: #f44d3b;
+  }
+  .app .subject p:after{
+    content:"";
+    display: block;
+    height: 1px;
+    background: #fab0a9;
+    width: 110%;
+    position: absolute;
+    right: -120%;
+    top: 50%;
+  }
+  .app .subject p:before{
+    content:"";
+    display: block;
+    height: 1px;
+    background: #fab0a9;
+    width: 110%;
+    position: absolute;
+    left: -120%;
+    top: 50%;
+  }
+  .app .subject .subject-img{}
+  .app .subject .subject-img .swiper-slide{width: 55%;margin: 0 0 0 5%;}
+  .app .subject .subject-img img{width: 100%;}
+  
+  .app .subject ul{padding: 0 3%;}
+  .app .subject ul li{overflow: hidden;color: #5f646f;padding: 0 0 1%}
+  .app .subject ul li a{display: block;float: left;color: #fff;width: 65%;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;font-size: 0.85rem;}
+  .app .subject ul li span{display: block;float: right;transform: scale(0.75)}
+  
+  .app .subject .phone{color: #fff;font-size: 0.85rem;text-align: center}
+  .app .subject .phone span{display: block;transform: scale(0.65);margin: 2% 0;color: #999;}
+  .app .baoyou{
+    background: #2b343f;padding-bottom: 3%;
+  }
+  .app .boot-game {
+    background: #fff;
+    display: -webkit-flex;
+    display: flex;
+    padding:0 2%;
+    margin-bottom: 1%;
+    justify-content:flex-start;
+    flex-wrap: wrap;
+  }
+  .app .boot-game .single {
+    overflow: hidden;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    margin-bottom: 6%;
+    margin-top: 0;
+  }
+  @-webkit-keyframes slit {
+    0%{transform: rotateY(87deg) scale(0.5);}
+    50% { transform: translateZ(-250px) rotateY(89deg); opacity: 1; animation-timing-function: ease-in;}
+    100% { transform: translateZ(0) rotateY(0deg); opacity: 1; }
+  }
+  @keyframes slit {
+    0%{transform: rotateY(87deg) scale(0.5);}
+    50% { transform: translateZ(-250px) rotateY(89deg); opacity: 1; animation-timing-function: ease-in;}
+    100% { transform: translateZ(0) rotateY(0deg); opacity: 1; }
+  }
+  /*@-webkit-keyframes slit2 {*/
+    /*0%{transform: rotateX(0deg)}*/
+    /*70% { transform: rotateX(53deg) translateZ(10px);animation-timing-function: ease-in;opacity: 1;}*/
+    /*100% {transform: rotateX(53deg) translateY(-320px) scale(0.3); opacity: 0; }*/
+  /*}*/
+  /*@keyframes slit2 {*/
+    /*0%{transform: rotateX(0deg)}*/
+    /*70% { transform: rotateX(53deg) translateZ(10px);animation-timing-function: ease-in;opacity: 1;}*/
+    /*100% {transform: rotateX(53deg) translateY(-320px) scale(0.3); opacity: 0; }*/
+  /*}*/
+  
+  
+  
+  
+  
+  /***************************/
+  .bgw,
+  .bgw1 {
+    overflow: hidden;
+    background: #fff;
+  }
+  .bgw2 {
+    background: #fff;
+  }
+  
+  i{ display: block;}
+  
+  .l1--pload{
+    padding-top:14%;
+    box-sizing: border-box;
+    /* border:.5px solid #999; */
+    border-radius:3px;  
+    background-color:#cecece;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-opacity:0.6;
+    opacity:0.6;
+  }
+  .single .logo{
+      border-radius:3px;  
+  }
+  /***************************/
+  .top{
+      position:relative;
+      background-image:url(../files/top-bg.png);
+      background-repeat:no-repeat;
+      background-size:100%;
+  }
+  .top-mask-bg img{
+      position:absolute;
+      top:35%;
+      left:0;
+      width:100%;
+      z-index:1;
+  }
+  .hp-desc{
+      position:relative;
+      padding-top: 22%;
+      padding-bottom:2%;
+      text-align: center;
+      z-index:2;
+  }
+  .hp-desc-logo{
+      width: 26%;
+      height: 26%;
+  }
+  .hp-desc-title{
+      color: #464646;
+      font-size: 18px;
+      margin: 1% auto;
+  }
+  .hp-desc-title .official{
+      border:1px solid #FFA64D;
+      font-size:0.6rem;
+      background:#FEE5E9;
+      color:#F60;
+      border-radius: 0.2rem;
+      margin-left:0.5rem;
+      padding:0 2px;
+  }
+  .hp-desc-detail{
+      font-size: 13px;
+      color: #9f9f9f;
+      padding-bottom: 1%;
+  }
+  
+  .app .hp-download-btn{
+      width:60%;
+      height:3rem;
+      line-height:3rem;
+      color:#FFFFFF;
+      background:linear-gradient(to right, #59DCF3, #44B4FF);
+      background:-webkit-linear-gradient(to right, #59DCF3, #44B4FF);
+      font-size:1rem;
+      display:block;
+      margin:1% auto;
+      border-radius: 0.4rem;
+  }
+  .common-center{
+      margin-left:auto;
+      margin-right:auto;
+      text-align:center;
+  }
+  .common-hide{
+      display: none;
+  }
+  .hp-mask{
+      z-index:100;
+  }
+  .hp-mask-background{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;				
+      background: #000;
+      opacity: 0.6;
+  }
+  .hp-mask-instruction{
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      width: 100%;
+      height: 100%;
+      z-index:100;
+  }
+  .top-mask{
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+  }
+  .top-mask img{
+      width:100%;
+      filter:alpha(opacity=80);
+      -moz-opacity:0.8;  
+      -khtml-opacity: 0.8;  
+      -webkit-opacity: 0.8;  
+      opacity:0.8;
+  }
+  
+  
+  /**å¼¹æ¡†æç¤º**/
+  #dialogBg{width:100%;height:100%;background-color:#000000;opacity:.6;filter:alpha(opacity=60);position:fixed;top:0;left:0;z-index:3;display:none;}
+  #dialog { position: fixed;right: 0; top:0; width: 90%; z-index: 4; display: none;}
+  .doload-red { background: #469da2;}
+  
+  .iosinstall{
+      display: none;
+  }
+  .iosinstall p{
+      text-align: center;
+      line-height: 40px;
+      font-size: 16px;
+      color: #5154ab;
+  }
+  .iosinstall img{width:100%;border:none;vertical-align:middle; display: block;}
+  
+  
+  .iosinstall-tip-mask{
+      position:fixed;
+      left:0;
+      top:0;
+      z-index: 88;
+      width:100%;
+      height:100%;
+      background-color:rgba(0,0,0,.3)
+  }
+  .iosinstall-wrap{
+      animation: myfirst 0.5s;
+      -moz-animation: myfirst 0.5s;	/* Firefox */
+      -webkit-animation: myfirst 0.5s;	/* Safari Ã¥â€™Å’ Chrome */
+      -o-animation: myfirst 0.5s;	/* Opera */
+      width: 100%;
+  }
+  .iosinstall-wrap{
+      position:fixed;
+      bottom:0;
+  }
+  @-webkit-keyframes myfirst
+  {
+      from {bottom:-200px;}
+      to {bottom:0;}
+  }
+  @keyframes myfirst
+  {
+      from {bottom:-200px;}
+      to {bottom:0;}
+  }
+  /*æµ®çª—æ ·å¼*/
+  .iosinstall-tip{
+      background:#fff;
+      color:#000;
+      display:-webkit-box;
+      display:-webkit-flex;
+      display:-ms-flexbox;
+      display:flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      padding-bottom: 1rem;
+  }
+  .iosinstall-tip{
+      font-size: 0.7rem;
+  }
+  .iosinstall-tip a{
+      text-decoration:none;
+  }
+  .iosinstall-tip h3 {
+      background-color: #efeff4;
+      padding: 0.3rem 1rem;
+      font-weight: normal;
+      position: relative;
+      margin: 0;
+  }
+  .iosinstall-tip a {
+      text-decoration: none;
+  }
+  .btn-close {
+      background: url(../images/ios-modal-close.png) no-repeat center;
+      width: 12px;
+      height: 19px;
+      display: inline-block;
+      background-size: 12px;
+      position: absolute;
+      right: 1.4rem;
+  }
+  .iosinstall-tip section {
+      height: auto;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: column;
+          -ms-flex-direction: column;
+              flex-direction: column;
+  }
+  .red { color: red; }
+  .row {
+      font-weight: normal;
+      font-size: 0.7rem;
+      padding: 0 1rem;
+      position: relative;
+      margin: 0.3rem 0;
+  }
+  .first-step-div {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+  }
+  .first-step-image {
+      width: auto;
+      height: 3rem;
+      margin: 0.5rem;
+  }
+  .second-step-image {
+      height: 2.2rem;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -webkit-flex-direction: row;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      background: #f6f6f8;
+      padding: 0 12px;
+      margin: 0.5rem 1.4rem 0 1.4rem;
+      overflow: hidden;
+      border-radius: 5px;
+  }
+  .setting-icon {
+      margin-right: 10px;
+  }
+  .setting-icon img {
+      width: 2.2rem;
+  }
+  .second-step-image span {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      -webkit-box-flex: 80%;
+      -webkit-flex: 80%;
+          -ms-flex: 80%;
+              flex: 80%;
+  }
+  .setting-arrow {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+  }
+  .setting-arrow img {
+      margin-left: 0.3rem;
+      height: 0.8rem;
+      width: auto;
+  }
+  .btn-iosinstall-go {
+      background: #01d662;
+      height: 1.4rem;
+      width: 12rem;
+      border-radius: 1.2rem;
+      text-align: center;
+      line-height: 1.4rem;
+      color: #fff;
+      margin: 1.2rem auto 0;
+      display: block;
+  }
+  .btn-isoinstall-agree {
+      margin: 1.2rem auto 0;
+      display: block;
+  }
+  .btn-isoinstall-agree img{ height:2rem; }
+  
