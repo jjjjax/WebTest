@@ -142,7 +142,14 @@
       $('#div_mask').removeClass("common-hide");
     } else {
       if (isAndroid && config && config.apkUrl1) {
-        window.location.href = config.apkUrl1;
+        // 创建一个隐藏的a标签来触发下载
+        var link = document.createElement('a');
+        link.href = config.apkUrl1;
+        link.download = 'app.apk'; // 设置下载文件名
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       }
       if (isIOS && config && config.ipaUrl1) {
         window.location.href = config.ipaUrl1;
@@ -159,7 +166,14 @@
       $('#div_mask').removeClass("common-hide");
     } else {
       if (isAndroid && config && config.apkUrl2) {
-        window.location.href = config.apkUrl2;
+        // 创建一个隐藏的a标签来触发下载
+        var link = document.createElement('a');
+        link.href = config.apkUrl2;
+        link.download = 'app.apk'; // 设置下载文件名
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       }
       if (isIOS && config && config.ipaUrl2) {
         window.location.href = config.ipaUrl2;
