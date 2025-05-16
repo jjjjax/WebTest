@@ -1,0 +1,56 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+所有回应都用中文回应。
+
+# 核心提示
+    我是一个Unity开发工程师，最近想尝试一下web前端，对于很多概念我不太了解。这个小项目是朋友之前随手写的。现在他要我拿来练手。
+    你现在就当我是一个初学者，任何概念都详细解释。
+
+# Web前端项目概述
+
+## 项目背景
+这是一个用于Web前端学习的小型项目。项目采用传统的HTML、CSS和JavaScript技术栈，适合初学者学习和实践。
+
+## 技术栈说明
+- HTML5：用于构建网页结构
+- CSS3：用于页面样式和布局
+- JavaScript：实现交互功能
+- jQuery：简化JavaScript操作的库
+- Clipboard.js：处理剪贴板操作
+
+## 项目结构
+- `index.html`：主页面文件
+- `style.css`：样式文件
+- `jquery-1.10.2.min.js`：jQuery库文件
+- `clipboard.min.js`：剪贴板操作库
+- 图片资源：
+  - `top-mask_.png`
+  - `top-bg.png`
+  - `jiaocheng.jpg`
+  - `gongfuxmxz.png`
+
+## 开发指南
+1. 所有代码修改都应该遵循Web标准
+2. 样式修改请在`style.css`中进行
+3. 交互功能主要在`index.html`中实现
+4. 图片资源请放在项目根目录下
+
+## 注意事项
+- 这是一个学习项目，建议先理解现有代码
+- 修改代码时注意保持代码风格一致
+- 建议使用现代浏览器进行开发和测试
+- 图片资源请保持原有格式和命名
+
+## 学习建议
+1. 先熟悉HTML基础结构
+2. 学习CSS样式和布局
+3. 理解JavaScript和jQuery的基本用法
+4. 尝试修改和添加新功能
+
+
+
+
+
