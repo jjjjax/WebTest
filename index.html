@@ -6,6 +6,7 @@
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="index">
   <meta content="telephone=no" name="format-detection">
@@ -67,7 +68,7 @@
         $('#normalContent').hide();
         $('#wechatContent').show();
       }
-      else if (isiOS) {
+      else {
         $('#normalContent').show();
         $('#wechatContent').hide();
         $('#iosTutorial').show();
@@ -90,16 +91,14 @@
         <div class="hp-desc-detail">
           <img class="common-center hp-desc-logo" src="./files/gongfuxmxz.png">
         </div>
-        <p class="hp-desc-title" id = "apkName">功夫熊猫<span class="official">官方</span></p>
-        <p class="hp-desc-detail" id = "apkVersion">版本号：1.0.8</p>
-        <p class="hp-desc-detail" id = "apkUpdateTime">更新时间：2025-05-10 12:00:00</p>
+        <p class="hp-desc-title" id="apkName">功夫熊猫<span class="official">官方</span></p>
+        <p class="hp-desc-detail" id="apkVersion">版本号：1.0.8</p>
+        <p class="hp-desc-detail" id="apkUpdateTime">更新时间：2025-05-10 12:00:00</p>
         <!--android下载-->
         <a class="hp-download-btn check-wechat downloadbtn_1"
-          style="background:linear-gradient(to right, #59DCF3, #2dc93a)" onclick="add()" data-clipboard-action="copy"
-          data-clipboard-text="11111">安全下载1</a>
+          style="background:linear-gradient(to right, #59DCF3, #2dc93a)" onclick="add()">安全下载1</a>
         <a class="hp-download-btn check-wechat downloadbtn_2"
-          style="background:linear-gradient(to right, #2dc93a, #59DCF3)" onclick="add2()" data-clipboard-action="copy"
-          data-clipboard-text="22222">安全下载2</a>
+          style="background:linear-gradient(to right, #2dc93a, #59DCF3)" onclick="add2()">安全下载2</a>
 
         <div id="div_mask" class="common-hide hp-mask top-mask">
           <div class="top-mask-background"></div>
@@ -142,10 +141,16 @@
       $('#div_mask').removeClass("common-hide");
     } else {
       if (isAndroid && config && config.apkUrl1) {
-        window.location.href = config.apkUrl1;
+        const baseUrl = window.location.origin;
+        const apkPath = config.apkUrl1.startsWith('/') ? config.apkUrl1 : '/' + config.apkUrl1;
+        console.log(baseUrl + apkPath);
+        window.location.href = baseUrl + apkPath;
       }
       if (isIOS && config && config.ipaUrl1) {
-        window.location.href = config.ipaUrl1;
+        const baseUrl = window.location.origin;
+        const ipaPath = config.ipaUrl1.startsWith('/') ? config.ipaUrl1 : '/' + config.ipaUrl1;
+        console.log(baseUrl + ipaPath);
+        window.location.href = 'itms-services://?action=download-manifest&url=' + encodeURIComponent(baseUrl + ipaPath);
       }
     }
   }
@@ -159,53 +164,17 @@
       $('#div_mask').removeClass("common-hide");
     } else {
       if (isAndroid && config && config.apkUrl2) {
-        window.location.href = config.apkUrl2;
+        const baseUrl = window.location.origin;
+        const apkPath = config.apkUrl2.startsWith('/') ? config.apkUrl2 : '/' + config.apkUrl2;
+        console.log(baseUrl + apkPath);
+        window.location.href = baseUrl + apkPath;
       }
       if (isIOS && config && config.ipaUrl2) {
-        window.location.href = config.ipaUrl2;
+        const baseUrl = window.location.origin;
+        const ipaPath = config.ipaUrl2.startsWith('/') ? config.ipaUrl2 : '/' + config.ipaUrl2;
+        console.log(baseUrl + ipaPath);
+        window.location.href = 'itms-services://?action=download-manifest&url=' + encodeURIComponent(baseUrl + ipaPath);
       }
-    }
-  }
-</script>
-<script>
-  new ClipboardJS('.downloadbtn_1');
-  new ClipboardJS('.downloadbtn_2');
-</script>
-
-
-<script>
-  document.onkeydown = function () {
-    // if (window.event && window.event.keyCode == 123) {
-    //   alert("禁止f12");
-    //   event.keyCode = 0;
-    //   event.returnValue = false;
-    // }
-    // if (window.event && window.event.keyCode == 83) {
-    //   alert("禁止control+s");
-    //   event.keyCode = 0;
-    //   event.returnValue = false;
-    // }
-    // if (window.event && window.event.keyCode == 13) {
-    //   window.event.keyCode = 505;
-    // }
-    // if (window.event && window.event.keyCode == 8) {
-    //   alert(str + "\n请使用Del键进行字符的删除操作！");
-    //   window.event.returnValue = false;
-    // }
-  }
-  document.oncontextmenu = function (event) {
-    if (window.event) {
-      event = window.event;
-    }
-    try {
-      var the = event.srcElement;
-      if (!((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
-        return false;
-      }
-      return true;
-    }
-    catch (e) {
-      return false;
     }
   }
 </script>
